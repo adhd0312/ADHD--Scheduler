@@ -1,0 +1,648 @@
+<html lang="ko">
+
+<head>
+    <!-- meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- title / favicon -->
+    <title></title>
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/common.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <!-- script -->
+</head>
+
+<body>
+    <!-- start -->
+    <div class="wrap">
+        <div class="top">
+            <h1 class="now"></h1>
+        </div>
+        <span class="table_toDo_title">TO DO</span>
+        <div class="table_toDo">
+            <ul class="time_list">
+            </ul>
+            <ul class="toDo_content">
+            </ul>
+        </div>
+        <div class="detail">
+            <span>DETAIL</span>
+            <ul class="detail_list"></ul>
+            <div class="add">
+                <input class="toDoText" type="text" placeholder="새로운 할 일 추가하기">
+                <input class="minute_toDo" type="number" placeholder="소요시간(분)">
+                <button type="button">추가하기</button>
+            </div>
+            <button onclick="insertData()" type="button" class="submit">변경사항 저장하기</button>
+        </div>
+    </div>
+    <script>
+        var asdd = [
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+                [
+                    [],
+                    []
+                ],
+
+            ]
+            //정상
+        if (localStorage.getItem("first") == "false") {
+            var todoArr = JSON.parse(localStorage.getItem("todoArr"));
+            console.log(todoArr);
+        } else {
+            var todoArr = new Array();
+            localStorage.setItem("first", true);
+        }
+        const time = new Date();
+        const koreanTime = String(time.getFullYear()) + "년 " + (Number(time.getMonth()) + Number(1)) + "월 " + time.getDate() + "일 " + time.getHours() + "시 " + time.getMinutes() + "분";
+        document.querySelectorAll(".now")[0].innerText = koreanTime;
+        setInterval(function() {
+            const time = new Date();
+            const koreanTime = String(time.getFullYear()) + "년 " + (Number(time.getMonth()) + Number(1)) + "월 " + time.getDate() + "일 " + time.getHours() + "시 " + time.getMinutes() + "분";
+            document.querySelectorAll(".now")[0].innerText = koreanTime;
+        }, 1000);
+
+        var datMinutes = 60 * 24 / 30;
+        var appendTimeEl = "<li></li>";
+        for (i = 0; i < datMinutes; i++) {
+            document.querySelectorAll(".time_list")[0].insertAdjacentHTML("beforeend", appendTimeEl);
+            if (i % 2 == 0) {
+                document.querySelectorAll(".time_list li")[i].innerText = i / 2 + " : 00";
+            } else {
+                document.querySelectorAll(".time_list li")[i].innerText = (i - 1) / 2 + " : 30";
+            }
+            console.log(localStorage.getItem("first"));
+            if (localStorage.getItem("first") == "true") {
+                for (i = 0; i < 48; i++) {
+                    var innerToDoArr = new Array();
+                    var text = new Array();
+                    var toDoTime = new Array();
+                    var compleArr = new Array();
+                    innerToDoArr.push(text)
+                    innerToDoArr.push(toDoTime)
+                    innerToDoArr.push(compleArr)
+                    todoArr.push(innerToDoArr)
+                    localStorage.setItem("first", false);
+                    localStorage.setItem("todoArr", JSON.stringify(todoArr));
+                }
+            }
+        }
+        todoArr.forEach(function(item, idx) {
+            document.querySelectorAll(".toDo_content")[0].insertAdjacentHTML("beforeend", "<li></li>");
+            document.querySelectorAll(".toDo_content li")[idx].innerHTML = "<span></span>";
+        });
+
+        function filteringBtns(targetEl, activeClass) {
+            document.querySelectorAll(targetEl).forEach(function(e, i) {
+                e.addEventListener('click', function() {
+                    var elements = Array.from(document.querySelectorAll(targetEl));
+                    var others = elements.filter(element => element !== e);
+                    e.classList.add(activeClass);
+                    others.forEach(item => {
+                        item.classList.remove(activeClass);
+                    });
+                });
+            });
+        }
+        filteringBtns("ul.toDo_content li", "focus");
+        if (time.getMinutes() >= 30) {
+            document.querySelectorAll("div.wrap div.table_toDo ul.toDo_content li")[time.getHours() * 2 + 1].classList.add("focus");
+        } else {
+            document.querySelectorAll("div.wrap div.table_toDo ul.toDo_content li")[time.getHours() * 2].classList.add("focus");
+
+        }
+        var addEl = document.querySelectorAll("div.wrap div.detail div.add button")[0];
+        addEl.addEventListener("click", function() {
+            if (document.querySelectorAll(".minute_toDo")[0].value.length > 0 && document.querySelectorAll(".toDoText")[0].value.length > 0 && Number(document.querySelectorAll(".minute_toDo")[0].value) > 0 && Number(document.querySelectorAll(".minute_toDo")[0].value) <= 180) {
+                var appendEl = '<li class="newToDo"> <h1>' + document.querySelectorAll(".toDoText")[0].value + '</h1><span class="restTime">' + document.querySelectorAll(".minute_toDo")[0].value + '분' + '</span><span></span> <input type="checkbox"></li>';
+                document.querySelectorAll(".detail_list")[0].insertAdjacentHTML("beforeend", appendEl);
+                document.querySelectorAll("ul.toDo_content li").forEach(function(item, idx) {
+                    if (item.classList.contains("focus")) {
+                        var timeValue = Number(document.querySelectorAll(".minute_toDo")[0].value / 30);
+                        if (timeValue <= 1) {
+                            todoArr[idx][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx][1].push(document.querySelectorAll(".minute_toDo")[0].value);
+                            todoArr[idx][2].push(false);
+                        } else if (timeValue <= 2) {
+                            todoArr[idx][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx][1].push(30);
+                            todoArr[idx][2].push(false);
+                            todoArr[idx + 1][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 1][1].push(Number(document.querySelectorAll(".minute_toDo")[0].value) - 30);
+                            todoArr[idx + 1][2].push(false);
+                        } else if (timeValue <= 3) {
+                            todoArr[idx][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx][1].push(30);
+                            todoArr[idx][2].push(false);
+                            todoArr[idx + 1][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 1][1].push(30);
+                            todoArr[idx + 1][2].push(false);
+                            todoArr[idx + 2][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 2][1].push(Number(document.querySelectorAll(".minute_toDo")[0].value) - 60);
+                            todoArr[idx + 2][2].push(false);
+                        } else if (timeValue <= 4) {
+                            todoArr[idx][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx][1].push(30);
+                            todoArr[idx][2].push(false);
+                            todoArr[idx + 1][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 1][1].push(30);
+                            todoArr[idx + 1][2].push(false);
+                            todoArr[idx + 2][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 2][1].push(30);
+                            todoArr[idx + 2][2].push(false);
+                            todoArr[idx + 3][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 3][1].push(Number(document.querySelectorAll(".minute_toDo")[0].value) - 90);
+                            todoArr[idx + 3][2].push(false);
+                        } else if (timeValue <= 5) {
+                            todoArr[idx][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx][1].push(30);
+                            todoArr[idx][2].push(false);
+                            todoArr[idx + 1][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 1][1].push(30);
+                            todoArr[idx + 1][2].push(false);
+                            todoArr[idx + 2][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 2][1].push(30);
+                            todoArr[idx + 2][2].push(false);
+                            todoArr[idx + 3][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 3][1].push(30);
+                            todoArr[idx + 3][2].push(false);
+                            todoArr[idx + 4][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 4][1].push(Number(document.querySelectorAll(".minute_toDo")[0].value) - 120);
+                            todoArr[idx + 4][2].push(false);
+                        } else if (timeValue <= 6) {
+                            todoArr[idx][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx][1].push(30);
+                            todoArr[idx][2].push(false);
+                            todoArr[idx + 1][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 1][1].push(30);
+                            todoArr[idx + 1][2].push(false);
+                            todoArr[idx + 2][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 2][1].push(30);
+                            todoArr[idx + 2][2].push(false);
+                            todoArr[idx + 3][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 3][1].push(30);
+                            todoArr[idx + 3][2].push(false);
+                            todoArr[idx + 4][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 4][1].push(30);
+                            todoArr[idx + 4][2].push(false);
+                            todoArr[idx + 5][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 5][1].push(Number(document.querySelectorAll(".minute_toDo")[0].value) - 150);
+                            todoArr[idx + 5][2].push(false);
+                        } else if (timeValue <= 7) {
+                            todoArr[idx][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx][1].push(30);
+                            todoArr[idx][2].push(false);
+                            todoArr[idx + 1][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 1][1].push(30);
+                            todoArr[idx + 1][2].push(false);
+                            todoArr[idx + 2][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 2][1].push(30);
+                            todoArr[idx + 2][2].push(false);
+                            todoArr[idx + 3][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 3][1].push(30);
+                            todoArr[idx + 3][2].push(false);
+                            todoArr[idx + 4][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 4][1].push(30);
+                            todoArr[idx + 4][2].push(false);
+                            todoArr[idx + 5][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 5][1].push(30);
+                            todoArr[idx + 5][2].push(false);
+                            todoArr[idx + 6][0].push(document.querySelectorAll(".toDoText")[0].value);
+                            todoArr[idx + 6][1].push(Number(document.querySelectorAll(".minute_toDo")[0].value) - 180);
+                            todoArr[idx + 6][2].push(false);
+                        }
+                    } else {
+
+
+                    }
+
+                });
+            } else {
+                alert("모든 값을 입력했는지 또는 소요시간을 제대로 입력했는지 확인하세요. 소요시간의 유효값은 1~180입니다.")
+            }
+
+
+        });
+        document.querySelectorAll("div.wrap div.table_toDo ul.toDo_content li").forEach(function(item, idx) {
+            if (item.classList.contains("focus")) {
+                todoArr[idx][0].forEach(function(item2, idx) {
+                    var appendEl = '<li class="updateToDo"><h1></h1><span class="restTime"></span><span></span> <input type="checkbox"><p class="remove">X</p></li>';
+                    document.querySelectorAll(".detail_list")[0].insertAdjacentHTML("beforeend", appendEl);
+                    document.querySelectorAll(".updateToDo h1")[idx].innerText = item2;
+                    document.querySelectorAll(".remove")[idx].setAttribute("idx", idx);
+                });
+                todoArr[idx][1].forEach(function(item3, idx) {
+                    document.querySelectorAll(".updateToDo .restTime")[idx].innerText = item3 + "분";
+                });
+                todoArr[idx][2].forEach(function(item4, idx) {
+                    if (item4 == true) {
+                        document.querySelectorAll("div.wrap div.detail ul.detail_list li")[idx].classList.add("completed");
+                    }
+
+                });
+            }
+            item.addEventListener("click", function() {
+                document.querySelectorAll(".detail_list li").forEach(function(item) {
+                    item.remove();
+                });
+                if (item.classList.contains("focus")) {
+                    todoArr[idx][0].forEach(function(item2, idx) {
+                        var appendEl = '<li class="updateToDo"><h1></h1><span class="restTime"></span><span></span> <input type="checkbox"><p class="remove">X</p></li>';
+                        document.querySelectorAll(".detail_list")[0].insertAdjacentHTML("beforeend", appendEl);
+                        document.querySelectorAll(".updateToDo h1")[idx].innerText = item2;
+                        document.querySelectorAll(".remove")[idx].setAttribute("idx", idx);
+                    });
+                    todoArr[idx][1].forEach(function(item3, idx) {
+                        document.querySelectorAll(".updateToDo .restTime")[idx].innerText = item3 + "분";
+                    });
+                    todoArr[idx][2].forEach(function(item4, idx) {
+                        if (item4 == true) {
+                            document.querySelectorAll("div.wrap div.detail ul.detail_list li")[idx].classList.add("completed");
+                            document.querySelectorAll(".completed input").forEach(function(item) {
+                                item.checked = true;
+                            });
+                        }
+
+                    });
+                    removeEl();
+                    compleInput();
+                }
+            });
+
+        });
+        removeEl();
+
+        function removeEl() {
+            document.querySelectorAll(".remove").forEach(function(item, idx) {
+                index = document.querySelectorAll(".remove")[idx].getAttribute("idx");
+                item.addEventListener("click", function() {
+                    var realIndex = item.getAttribute("idx");
+                    document.querySelectorAll("div.wrap div.table_toDo ul.toDo_content li").forEach(function(item2, idx2) {
+                        if (item2.classList.contains("focus")) {
+                            console.log(todoArr[idx2][0])
+                            console.log(todoArr[idx2][1])
+                            console.log(todoArr[idx2][2])
+                            delete todoArr[idx2][0][idx];
+                            delete todoArr[idx2][1][idx];
+                            delete todoArr[idx2][2][idx];
+
+                        }
+                    });
+                    document.querySelectorAll(".updateToDo")[idx].style.display = "none";
+                });
+            });
+
+        }
+        compleInput();
+
+        function compleInput() {
+            document.querySelectorAll("div.wrap div.detail ul.detail_list li input").forEach(function(item, idx) {
+                document.querySelectorAll("div.wrap div.table_toDo ul.toDo_content li").forEach(function(li, i) {
+                    if (li.classList.contains("focus")) {
+                        item.addEventListener("click", function() {
+                            if (item.checked == true) {
+                                todoArr[i][2][idx] = true;
+                                console.log(todoArr[i]);
+                            }
+                        });
+                    }
+                });
+
+            })
+        }
+
+
+
+
+        todoArr.forEach(function(item, idx) {
+
+            if (item[2].length <= 0) {
+                document.querySelectorAll(".toDo_content li span")[idx].innerText = 0;
+            } else {
+                var length = item[2].filter(realTodo => realTodo == false);
+                document.querySelectorAll(".toDo_content li span")[idx].innerText = length.length;
+                if (length.length == 0) {
+                    document.querySelectorAll(".toDo_content li span")[idx].innerText = "완";
+                }
+            }
+
+        });
+
+
+
+
+        function insertData() {
+            localStorage.setItem("todoArr", JSON.stringify(todoArr));
+            location.href = location.href;
+        }
+        removeNull();
+
+        function removeNull() {
+            var nullObjIndex = [];
+            var nullObjIndex2 = [];
+            todoArr.forEach(function(item, idx) {
+                item[0].forEach(function(item2, idx2) {
+                    if (item2 == "empty" || item2 == null) {
+                        nullObjIndex.push(idx);
+                        nullObjIndex2.push(idx2);
+                    }
+
+                });
+            });
+            console.log(nullObjIndex, nullObjIndex2);
+            nullObjIndex.forEach(function(item, idx) {
+                todoArr[nullObjIndex[idx]][0].splice(nullObjIndex2[idx], 1);
+                todoArr[nullObjIndex[idx]][1].splice(nullObjIndex2[idx], 1);
+                todoArr[nullObjIndex[idx]][2].splice(nullObjIndex2[idx], 1);
+                localStorage.setItem("todoArr", JSON.stringify(todoArr));
+                location.href = location.href;
+            });
+
+        }
+
+        (function() {
+            var lastTime = 0;
+            var vendors = ['ms', 'moz', 'webkit', 'o'];
+            for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+                window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+                window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] || window[vendors[x] + 'CancelRequestAnimationFrame'];
+            }
+
+            if (!window.requestAnimationFrame)
+                window.requestAnimationFrame = function(callback, element) {
+                    var currTime = new Date().getTime();
+                    var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+                    var id = window.setTimeout(function() {
+                        callback(currTime + timeToCall);
+                    }, timeToCall);
+                    lastTime = currTime + timeToCall;
+                    return id;
+                };
+
+            if (!window.cancelAnimationFrame)
+                window.cancelAnimationFrame = function(id) {
+                    clearTimeout(id);
+                };
+        }());
+
+        var movePoint = 0;
+        var ticking = false;
+        var isWheel = false;
+
+        var list = document.querySelectorAll('.table_toDo')[0];
+        var transformPrefix = getComputedStyle(list).msTransform ? "msTransform" :
+            getComputedStyle(list).mozTransform ? "mozTransform" :
+            getComputedStyle(list).webkitTransform ? "webkitTransform" : "transform";
+        var getTransX = getComputedStyle(list)[transformPrefix];
+        var listMoveX = parseInt(getTransX.split(',')[4]);
+        var listMoveEnd = (list.scrollWidth - list.offsetWidth) * -1;
+        listMoveX = -160 * (time.getHours() * 2 + 1);
+
+        function listMoving(movePoint) {
+            listMoveX -= movePoint;
+            if (listMoveX > 0) {
+                listMoveX = 0;
+            } else if (listMoveX < listMoveEnd) {
+                listMoveX = listMoveEnd;
+            }
+
+            console.log(transformPrefix, listMoveX);
+            list.style[transformPrefix] = 'translateX(' + listMoveX + 'px)';
+
+        }
+
+        function wheelEvent(e) {
+            movePoint = (e.type == "mousewheel" ? e.wheelDelta : e.deltaX) || e.deltaY;
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    listMoving(movePoint);
+                    ticking = false;
+                });
+            }
+            ticking = true;
+        }
+
+        list.addEventListener('mousewheel', wheelEvent);
+        list.addEventListener('wheel', function(e) {
+            wheelEvent(e);
+            if (!isWheel) {
+                list.removeEventListener('mousewheel', wheelEvent);
+                isWheel = true;
+            }
+        });
+
+        list.addEventListener('mouseenter', function(e) {
+            document.querySelector('html').className += ' prevent-history';
+        });
+        list.addEventListener('mouseleave', function(e) {
+            document.querySelector('html').className = document.querySelector('html').className.replace(/\s?(prevent-history)\s?/g, "");
+        });
+        if (time.getMinutes() >= 30) {
+            document.querySelectorAll(".table_toDo")[0].style.transform = "translateX(" + -160 * (time.getHours() * 2 + 1) + "px)";
+        } else {
+            document.querySelectorAll(".table_toDo")[0].style.transform = "translateX(" + -160 * (time.getHours() * 2) + "px)";
+
+        }
+        document.querySelectorAll("div.wrap div.table_toDo ul.toDo_content li>span").forEach(function(item, idx) {
+            if (Number(item.innerText) > 0) {
+                document.querySelectorAll("div.wrap div.table_toDo ul.toDo_content li")[idx].classList.add("isToDo");
+
+            } else if (item.innerText == "완") {
+                document.querySelectorAll("div.wrap div.table_toDo ul.toDo_content li")[idx].classList.add("done");
+            }
+        });
+        document.querySelectorAll(".completed input").forEach(function(item) {
+            item.checked = true;
+        });
+    </script>
+</body>
+
+</html>

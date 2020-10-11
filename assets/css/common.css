@@ -1,0 +1,210 @@
+/*reset_css_start*/
+
+select::-ms-expand {
+    display: none
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'noto_R';
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+html,
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+button,
+input,
+textarea,
+p,
+select,
+blockquote,
+th,
+td,
+img,
+a {
+    margin: 0;
+    padding: 0;
+    font-family: 'noto_R';
+    font-weight: 400;
+    color: #000;
+}
+
+html,
+body {
+    font-size: 100%;
+}
+
+li {
+    list-style: none
+}
+
+a {
+    text-decoration: none;
+    color: #333
+}
+
+h1,
+h2,
+p {
+    color: #191919;
+}
+
+a:hover {}
+
+a:active {
+    text-decoration: none
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+img {
+    display: block;
+    border: 0
+}
+
+button {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    outline: none
+}
+
+input,
+select,
+textarea {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background: #fff;
+    outline: none;
+    border-radius: 0;
+}
+
+input[type=password] {
+    font-family: 'Arial';
+}
+
+
+/*hide input number buttons*/
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    /* Firefox */
+}
+
+
+/*reset_css_end*/
+
+
+/*font*/
+
+@font-face {
+    font-family: "noto_T";
+    font-weight: 100;
+    font-style: normal;
+    src: url("../fonts/NotoSans-Thin.eot?") format("eot"), url("../fonts/NotoSans-Thin.otf") format("opentype"), url("../fonts/NotoSans-Thin.woff") format("woff"), url("../fonts/NotoSans-Thin.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "noto_L";
+    font-weight: 200;
+    font-style: normal;
+    src: url("../fonts/NotoSans-Light.eot?") format("eot"), url("../fonts/NotoSans-Light.otf") format("opentype"), url("../fonts/NotoSans-Light.woff") format("woff"), url("../fonts/NotoSans-Light.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "noto_DL";
+    font-weight: 300;
+    font-style: normal;
+    src: url("../fonts/NotoSans-DemiLight.eot?") format("eot"), url("../fonts/NotoSans-DemiLight.otf") format("opentype"), url("../fonts/NotoSans-DemiLight.woff") format("woff"), url("../fonts/NotoSans-DemiLight.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "noto_R";
+    font-weight: 400;
+    font-style: normal;
+    src: url("../fonts/NotoSans-Regular.eot?") format("eot"), url("../fonts/NotoSans-Regular.otf") format("opentype"), url("../fonts/NotoSans-Regular.woff") format("woff"), url("../fonts/NotoSans-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "noto_M";
+    font-weight: 500;
+    font-style: normal;
+    src: url("../fonts/NotoSans-Medium.eot?") format("eot"), url("../fonts/NotoSans-Medium.otf") format("opentype"), url("../fonts/NotoSans-Medium.woff") format("woff"), url("../fonts/NotoSans-Medium.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "noto_BL";
+    font-weight: 700;
+    font-style: normal;
+    src: url("../fonts/NotoSans-Black.eot?") format("eot"), url("../fonts/NotoSans-Black.otf") format("opentype"), url("../fonts/NotoSans-Black.woff") format("woff"), url("../fonts/NotoSans-Black.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "noto_B";
+    font-weight: 900;
+    font-style: normal;
+    src: url("../fonts/NotoSans-Bold.eot?") format("eot"), url("../fonts/NotoSans-Bold.otf") format("opentype"), url("../fonts/NotoSans-Bold.woff") format("woff"), url("../fonts/NotoSans-Bold.woff2") format("woff2");
+}
+
+
+/*font_end*/
+
+
+/*responsible font-size for app*/
+
+@media(max-width:1920px) {
+    html,
+    body {
+        font-size: 16px;
+        overflow: hidden;
+    }
+}
+
+@media(max-width:1620px) {
+    html,
+    body {
+        font-size: 16px;
+    }
+}
+
+@media(max-width:1080px) {
+    html,
+    body {
+        font-size: 16px;
+    }
+}
+
+@media(max-width:600px) {
+    html,
+    body {
+        font-size: 16px;
+    }
+}
